@@ -1,0 +1,80 @@
+<h1 ng_show="!beer.oldId">Add a new beer</h1>
+<h1 ng_show="beer.oldId">Update beer {{beer.name}}</h1>
+<p>
+	<a href="#/beers" title="Back to list" class="btn btn-info">Back to list</a>
+	<a href="#/delete/{{beer.id}}" title="Delete a beer" class="btn btn-danger" ng-show="beer.oldId">Delete {{beer.name}}</a>
+</p>
+<form novalidate="novalidate" ng-submit="processForm()">
+	<div class="form-group">
+		<label for="name">Name :</label>
+		<input type="text" 
+			   name="name" 
+			   id="name"
+			   ng-model="beer.name"
+			   required="required"
+			   class="form-control"
+			   placeholder="Affligem Blond" />
+		<div ng-show="beerMsg.name.$invalid" class="alert alert-danger" role="alert"> 
+			Name is required.
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="description">Description :</label>
+		<textarea name="description" 
+			      id="description"
+			      ng-model="beer.description" 
+			      class="form-control" 
+			      rows="5" 
+			      cols="5"
+				  placeholder="Affligem Blonde, the classic clear blonde abbey ale, with a gentle roundness and 6.8% alcohol. Low on bitterness, it is eminently drinkable."></textarea> 
+	</div>
+	<div class="form-group">
+		<label for="alcohol">Alcohol :</label>
+		<input type="number" 
+			   name="alcohol" 
+			   id="alcohol" 
+			   ng-model="beer.alcohol"
+			   class="form-control" 
+			   step="1" 
+			   placeholder="6.8" /> 
+	</div>
+	<div class="form-group">
+		<label for="name">Availability :</label>
+		<input type="text" ng-model="beer.availability" 
+			   placeholder="Year round" name="availability" id="availability" class="form-control" /> 
+	</div>
+	<div class="form-group">
+		<label for="brewery">brewery :</label>
+		<input type="text" 
+			   name="brewery" 
+			   id="brewery" 
+			   ng-model="beer.brewery"
+			   class="form-control" 
+			   placeholder="Brasserie Affligem (Heineken)" /> 
+	</div>
+	<div class="form-group">
+		<label for="serving">Serving :</label>
+		<input type="text" 
+			   name="serving" 
+			   id="serving"
+			   ng-model="beer.serving"
+			   class="form-control" 
+			   placeholder="Serve in a Snifter" /> 
+	</div>
+	<div class="form-group">
+		<label for="style">Style :</label>
+		<input type="text" 
+			   name="style" 
+			   id="style"
+			   ng-model="beer.style"
+			   class="form-control" 
+			   placeholder="Belgian-Style Blonde Ale" /> 
+	</div>
+	<div class="form-group">
+		<input type="hidden" name="id" ng-model="beer.id" />
+		<input type="hidden" name="img" ng-model="beer.img" />
+		<input type="hidden" name="label" ng-model="beer.label" />
+		<input type="hidden" name="oldId" ng-model="beer.oldId" />
+		<button type="submit" class="btn btn-success">OK</button>
+	</div>
+</form>
